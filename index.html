@@ -454,21 +454,37 @@
   </div>
   <style>
     #testimonials-track::-webkit-scrollbar { display: none; }
-    .t-card { background: var(--surface); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; min-width: 300px; max-width: 340px; flex-shrink: 0; scroll-snap-align: start; }
+    .t-card { background: var(--surface); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; min-width: min(300px, 82vw); max-width: 340px; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .t-quote { font-size: 1.05rem; line-height: 1.65; color: var(--text); font-style: italic; margin: 0; }
     .t-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
     .t-avatar { width: 40px; height: 40px; border-radius: 50%; background: #3A3A3A; color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
     .t-name { font-weight: 700; font-size: 0.9rem; color: var(--text); margin: 0; }
     .t-club { font-size: 0.8rem; color: var(--text-soft); margin: 0; }
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-credit { text-align: center; }
+    }
   </style>
   <script>
     function scrollFeatures(dir) {
       const track = document.getElementById('features-track');
-      track.scrollBy({ left: dir * 320, behavior: 'smooth' });
+      const cards = track.querySelectorAll('.feature-card');
+      const cardW = cards[0] ? cards[0].offsetWidth + 24 : 320;
+      const max = track.scrollWidth - track.clientWidth;
+      let next = track.scrollLeft + dir * cardW;
+      if (next > max) next = 0;
+      if (next < 0) next = max;
+      track.scrollTo({ left: next, behavior: 'smooth' });
     }
-  function scrollTestimonials(dir) {
+    function scrollTestimonials(dir) {
       const track = document.getElementById('testimonials-track');
-      track.scrollBy({ left: dir * 360, behavior: 'smooth' });
+      const cards = track.querySelectorAll('.t-card');
+      const cardW = cards[0] ? cards[0].offsetWidth + 24 : 324;
+      const max = track.scrollWidth - track.clientWidth;
+      let next = track.scrollLeft + dir * cardW;
+      if (next > max) next = 0;
+      if (next < 0) next = max;
+      track.scrollTo({ left: next, behavior: 'smooth' });
     }
   </script>
 </section>
