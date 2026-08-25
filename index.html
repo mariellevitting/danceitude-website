@@ -4,16 +4,16 @@
 
 <style>
   :root {
-    --ink: #1a1228;
+    --ink: #3A3A3A;
     --accent: #e2a9f1;
     --accent-deep: #c87de0;
     --accent-bg: #f5eeff;
     --surface: #ffffff;
     --muted: #6b7280;
     --border: #e5e7eb;
-    --hero-bg: #1a1228;
+    --hero-bg: #3A3A3A;
     --card-bg: #ffffff;
-    --text: #1a1228;
+    --text: #3A3A3A;
     --text-soft: #4b5563;
   }
   @media (prefers-color-scheme: dark) {
@@ -34,17 +34,17 @@
   /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: #1a1228;
+    background: #3A3A3A;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 clamp(1.5rem, 5vw, 4rem); height: 64px;
   }
   .nav-logo { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--accent); letter-spacing: 0.04em; text-decoration: none; }
-  .nav-cta { background: var(--accent); color: #1a1228; font-weight: 600; font-size: 0.875rem; padding: 0.5rem 1.25rem; border-radius: 999px; text-decoration: none; transition: background 0.18s; }
+  .nav-cta { background: var(--accent); color: #3A3A3A; font-weight: 600; font-size: 0.875rem; padding: 0.5rem 1.25rem; border-radius: 999px; text-decoration: none; transition: background 0.18s; }
   .nav-cta:hover { background: var(--accent-deep); color: #fff; }
 
   /* HERO */
   .hero {
-    background: #1a1228; color: #fff;
+    background: #3A3A3A; color: #fff;
     padding: clamp(3rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
     display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 80vh;
   }
@@ -59,7 +59,7 @@
   .hero h1 em { font-style: normal; color: var(--accent); }
   .hero-sub { font-size: 1.125rem; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; max-width: 440px; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #1a1228; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.75rem; border-radius: 999px; text-decoration: none; transition: background 0.18s, transform 0.14s; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #3A3A3A; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.75rem; border-radius: 999px; text-decoration: none; transition: background 0.18s, transform 0.14s; }
   .btn-primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-1px); }
   .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); font-weight: 600; font-size: 0.875rem; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; transition: border-color 0.18s, color 0.18s; }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
@@ -67,14 +67,14 @@
   /* Phone mockup */
   .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
   .phone-frame { width: 240px; background: #fff; border-radius: 36px; padding: 12px; box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08); position: relative; }
-  .phone-notch { width: 80px; height: 22px; background: #1a1228; border-radius: 999px; margin: 0 auto 12px; }
+  .phone-notch { width: 80px; height: 22px; background: #3A3A3A; border-radius: 999px; margin: 0 auto 12px; }
   .phone-screen { background: #f9f5ff; border-radius: 24px; padding: 16px 14px; min-height: 380px; }
-  .phone-screen-header { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 800; color: #1a1228; margin-bottom: 12px; }
+  .phone-screen-header { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 800; color: #3A3A3A; margin-bottom: 12px; }
   .booking-card { background: #fff; border-radius: 14px; padding: 12px; margin-bottom: 8px; border-left: 3px solid var(--accent-deep); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .booking-card-time { font-size: 0.65rem; color: #888; margin-bottom: 2px; }
-  .booking-card-name { font-size: 0.78rem; font-weight: 700; color: #1a1228; }
+  .booking-card-name { font-size: 0.78rem; font-weight: 700; color: #3A3A3A; }
   .booking-card-style { display: inline-block; font-size: 0.6rem; font-weight: 600; background: #f3e8ff; color: #a855f7; padding: 1px 8px; border-radius: 999px; margin-top: 4px; }
-  .floating-chip { position: absolute; background: #fff; border-radius: 14px; padding: 10px 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); font-size: 0.72rem; font-weight: 600; color: #1a1228; display: flex; align-items: center; gap: 8px; }
+  .floating-chip { position: absolute; background: #fff; border-radius: 14px; padding: 10px 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); font-size: 0.72rem; font-weight: 600; color: #3A3A3A; display: flex; align-items: center; gap: 8px; }
   .floating-chip-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
   .chip-left { left: -40px; top: 60px; }
   .chip-right { right: -50px; bottom: 80px; }
@@ -117,7 +117,7 @@
   .feature-desc { font-size: 0.9rem; color: var(--text-soft); line-height: 1.65; }
 
   /* ROLES */
-  .roles-section { background: #1a1228; }
+  .roles-section { background: #3A3A3A; }
   .roles-section .section-heading { color: #fff; }
   .roles-section .section-eyebrow { color: var(--accent); }
   .roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -148,7 +148,7 @@
   .beginning-highlight { font-size: 1.15rem; font-weight: 600; color: var(--text); font-style: italic; border-left: 3px solid var(--accent-deep); padding-left: 1.25rem; margin: 2rem 0; }
 
   /* CTA */
-  .cta-section { background: #1a1228; text-align: center; }
+  .cta-section { background: #3A3A3A; text-align: center; }
   .cta-card { background: rgba(226,169,241,0.08); border: 1px solid rgba(226,169,241,0.2); border-radius: 24px; padding: 3rem 2rem; max-width: 600px; margin: 0 auto; }
   .cta-logo { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
   .cta-tagline { font-size: 1rem; color: rgba(255,255,255,0.5); font-style: italic; margin-bottom: 2.5rem; }
@@ -161,7 +161,7 @@
   .store-btn-name { font-weight: 700; font-size: 1rem; }
 
   /* FOOTER */
-  footer { background: #120e1e; padding: 3rem clamp(1.5rem, 5vw, 4rem); }
+  footer { background: #2a2a2a; padding: 3rem clamp(1.5rem, 5vw, 4rem); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
   .footer-logo { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent); letter-spacing: 0.04em; }
   .footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 0.25rem; }
@@ -174,7 +174,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">DANCEITUDE</a>
+  <a class="nav-logo" href="#"><img src="logo.png" alt="Danceitude" style="height:36px; width:auto;"></a>
   <a class="nav-cta" href="https://apps.apple.com/no/app/danceitude/id6800676215">Last ned appen</a>
 </nav>
 
