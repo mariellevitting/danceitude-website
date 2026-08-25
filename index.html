@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danceitude</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
 
@@ -47,7 +48,12 @@
     padding: clamp(3rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
     display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 80vh;
   }
-  @media (max-width: 800px) { .hero { grid-template-columns: 1fr; min-height: auto; padding: 2.5rem 1.5rem; } .hero-visual { display: none; } }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding: 3rem 1.5rem 3rem; }
+    .hero-visual { display: none !important; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-sub { font-size: 1rem; }
+  }
   .hero-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
   .hero h1 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.1; text-wrap: balance; margin-bottom: 1.5rem; color: #fff; }
   .hero h1 em { font-style: normal; color: var(--accent); }
