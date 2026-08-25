@@ -414,19 +414,21 @@
 <!-- KONTAKT -->
 <section id="kontakt" style="background: var(--surface); padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);">
   <div style="max-width: 600px; margin: 0 auto;">
-    <p class="section-eyebrow">Ta kontakt</p>
-    <h2 class="section-heading">Har du spørsmål?</h2>
-    <p style="font-size:1rem; color: var(--text-soft); margin-bottom: 2rem;">Send oss en melding, så svarer vi så fort vi kan.</p>
+    <p class="section-eyebrow">For danseklubber</p>
+    <h2 class="section-heading">Vil din klubb bruke Danceitude?</h2>
+    <p style="font-size:1rem; color: var(--text-soft); margin-bottom: 2rem;">Vi er åpne for å utvide til flere klubber. Fyll ut skjemaet, så tar vi kontakt for en uforpliktende prat om hvordan appen kan tilpasses din klubb.</p>
     <form action="https://formspree.io/f/miemarielle@live.no" method="POST" style="display:flex; flex-direction:column; gap:1rem;">
-      <input type="text" name="name" placeholder="Navn" required
+      <input type="text" name="name" placeholder="Ditt navn" required
+        style="padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: var(--surface); color: var(--text); outline: none;">
+      <input type="text" name="club" placeholder="Klubbnavn" required
         style="padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: var(--surface); color: var(--text); outline: none;">
       <input type="email" name="email" placeholder="E-post" required
         style="padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: var(--surface); color: var(--text); outline: none;">
-      <textarea name="message" placeholder="Melding" rows="5" required
+      <textarea name="message" placeholder="Fortell litt om klubben din – antall medlemmer, dansestiler, hva dere sliter med i dag..." rows="5"
         style="padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; background: var(--surface); color: var(--text); outline: none; resize: vertical;"></textarea>
       <button type="submit"
         style="background: #3A3A3A; color: var(--accent); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 0.9rem 2rem; border: none; border-radius: 999px; cursor: pointer; transition: background 0.18s;">
-        Send melding
+        Ja, jeg vil vite mer!
       </button>
     </form>
   </div>
