@@ -121,7 +121,11 @@
   .roles-section .section-heading { color: #fff; }
   .roles-section .section-eyebrow { color: var(--accent); }
   .roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  @media (max-width: 800px) { .roles-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 800px) {
+    .roles-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 1.25rem; padding-bottom: 1rem; }
+    .roles-grid::-webkit-scrollbar { display: none; }
+    .role-card { min-width: 85vw; scroll-snap-align: start; }
+  }
   .role-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(226,169,241,0.15); border-radius: 20px; padding: 2rem; transition: background 0.2s, border-color 0.2s; }
   .role-card:hover { background: rgba(226,169,241,0.08); border-color: rgba(226,169,241,0.4); }
   .role-avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(226,169,241,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--accent); margin-bottom: 1.25rem; }
