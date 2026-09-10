@@ -223,11 +223,21 @@
     <h2 class="section-heading" style="color:#fff; font-size:clamp(1.5rem, 3vw, 2rem); margin-bottom:1.75rem;">Klubber som bruker Danceitude</h2>
     <div class="club-logos">
       <figure>
-        <img src="evolution-logo.png" alt="Evolution Danseklubb" class="club-badge club-badge--circle">
+        <div class="badge-3d">
+          <div class="badge-inner badge-inner--circle">
+            <img src="evolution-logo.png" alt="Evolution Danseklubb" class="club-badge club-badge--circle">
+            <span class="badge-glare"></span>
+          </div>
+        </div>
         <figcaption>Evolution Danseklubb<span>Sarpsborg</span></figcaption>
       </figure>
       <figure>
-        <img src="trondheim-danseklubb.jpg" alt="Trondheim Danseklubb" class="club-badge club-badge--rounded">
+        <div class="badge-3d" style="animation-delay:-3s;">
+          <div class="badge-inner badge-inner--rounded">
+            <img src="trondheim-danseklubb.jpg" alt="Trondheim Danseklubb" class="club-badge club-badge--rounded">
+            <span class="badge-glare"></span>
+          </div>
+        </div>
         <figcaption>Trondheim Danseklubb<span>Trondheim</span></figcaption>
       </figure>
     </div>
@@ -235,13 +245,72 @@
   <style>
     .club-logos { display:flex; justify-content:center; gap:clamp(2.5rem, 8vw, 5rem); flex-wrap:wrap; }
     .club-logos figure { display:flex; flex-direction:column; align-items:center; gap:0.85rem; margin:0; }
-    .club-badge { width:96px; height:96px; flex-shrink:0; transition:transform 0.18s; }
-    .club-logos figure:hover .club-badge { transform:translateY(-4px); }
+
+    .badge-3d { position:relative; width:96px; height:96px; perspective:600px; animation:badgeFloat 6s ease-in-out infinite; }
+    .badge-3d::after {
+      content:''; position:absolute; left:50%; top:50%; width:120%; height:120%;
+      transform:translate(calc(-50% + var(--shx,0px)), -50%);
+      background:radial-gradient(circle at center, rgba(226,169,241,0.35), rgba(226,169,241,0) 65%);
+      opacity:var(--glow,0); filter:blur(6px); transition:transform .3s ease-out, opacity .4s ease-out; z-index:-1;
+    }
+    .badge-inner {
+      position:relative; width:100%; height:100%;
+      transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(var(--tz,0px));
+      transition:transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+    .badge-3d.is-active .badge-inner { transition:transform .1s ease-out; }
+    .badge-inner--circle { border-radius:50%; }
+    .badge-inner--rounded { border-radius:22px; }
+
+    .club-badge { width:96px; height:96px; display:block; flex-shrink:0; }
     .club-badge--circle { object-fit:contain; border-radius:50%; }
-    .club-badge--rounded { object-fit:contain; background:#fff; border-radius:26px; padding:10px; }
+    .club-badge--rounded { object-fit:contain; background:#fff; border-radius:22px; padding:8px; }
+
+    .badge-glare {
+      position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.6), rgba(255,255,255,0) 55%);
+      opacity:var(--glare,0); transition:opacity .35s ease-out; mix-blend-mode:soft-light;
+    }
+
     .club-logos figcaption { font-family:'Poppins',sans-serif; font-weight:700; font-size:0.95rem; color:#fff; line-height:1.45; }
     .club-logos figcaption span { display:block; font-weight:400; font-size:0.8rem; color:rgba(255,255,255,0.45); }
+
+    @keyframes badgeFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+    @media (prefers-reduced-motion: reduce) { .badge-3d { animation:none; } }
   </style>
+  <script>
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!matchMedia('(hover: hover)').matches) return;
+      var MAX = 22;
+      document.querySelectorAll('.club-logos .badge-3d').forEach(function (el) {
+        var inner = el.querySelector('.badge-inner');
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          el.classList.add('is-active');
+          inner.style.setProperty('--ry', (px * MAX).toFixed(2) + 'deg');
+          inner.style.setProperty('--rx', (-py * MAX).toFixed(2) + 'deg');
+          inner.style.setProperty('--tz', '18px');
+          inner.style.setProperty('--gx', (50 + px * 90).toFixed(1) + '%');
+          inner.style.setProperty('--gy', (50 + py * 90).toFixed(1) + '%');
+          inner.style.setProperty('--glare', '1');
+          el.style.setProperty('--shx', (-px * 16).toFixed(1) + 'px');
+          el.style.setProperty('--glow', '1');
+        });
+        el.addEventListener('pointerleave', function () {
+          el.classList.remove('is-active');
+          inner.style.setProperty('--rx', '0deg');
+          inner.style.setProperty('--ry', '0deg');
+          inner.style.setProperty('--tz', '0px');
+          inner.style.setProperty('--glare', '0');
+          el.style.setProperty('--shx', '0px');
+          el.style.setProperty('--glow', '0');
+        });
+      });
+    })();
+  </script>
 </section>
 
 <!-- FEATURES -->
