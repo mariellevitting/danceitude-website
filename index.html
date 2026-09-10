@@ -44,21 +44,69 @@
 
   /* HERO */
   .hero {
+    position: relative;
     background: #3A3A3A url('Danceitude_bakgrunn.png') center/cover no-repeat; color: #fff;
+    min-height: 88vh;
+  }
+  .hero-stage {
+    min-height: 88vh;
     padding: clamp(3rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 80vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 2.25rem; text-align: center;
   }
+  .hero-word { display: flex; justify-content: center; align-items: baseline; line-height: 1; }
+  .hero-word-part {
+    font-family: 'Poppins', sans-serif; font-weight: 800; letter-spacing: -0.02em;
+    font-size: clamp(3rem, 15vw, 12rem);
+    background: linear-gradient(100deg, #f0d2f8, var(--accent-deep));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-phone { width: min(300px, 58vw); height: auto; max-height: 62vh; object-fit: contain; border-radius: 16px; }
+  .hero-copy { max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .hero-copy h1 {
+    font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.15; text-wrap: balance; color: #fff;
+  }
+  .hero-copy h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center; }
+
+  /* Scroll-animated hero (desktop + motion) */
+  .hero.hero-armed { min-height: 240vh; }
+  .hero.hero-armed .hero-stage {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 100vh; min-height: 0; overflow: hidden; gap: 0;
+  }
+  .hero.hero-armed .hero-stage.is-fixed { position: fixed; }
+  .hero.hero-armed .hero-stage.is-end { position: absolute; top: auto; bottom: 0; }
+  .hero.hero-armed .hero-word { position: relative; z-index: 1; will-change: transform; }
+  .hero.hero-armed .hero-word-part { will-change: transform; }
+  .hero.hero-armed .hero-word-part:first-child { transform: translateX(calc((1 - var(--p, 0)) * -33vw)); }
+  .hero.hero-armed .hero-word-part:last-child  { transform: translateX(calc((1 - var(--p, 0)) * 33vw)); }
+  .hero.hero-armed .hero-phone {
+    position: absolute; left: 50%; top: 50%; z-index: 2; will-change: transform;
+    transform: translate(-50%, -50%) translateY(calc(40vh - var(--p, 0) * 84vh)) scale(calc(1 - var(--p, 0) * 0.4));
+    opacity: calc(1.1 - var(--p, 0) * 0.55);
+  }
+  .hero.hero-armed .hero-copy {
+    position: absolute; left: 50%; top: 62%; z-index: 3; width: 90%;
+    transform: translateX(-50%) translateY(calc((1 - var(--cp, 0)) * 24px));
+    opacity: var(--cp, 0); pointer-events: none;
+  }
+  .hero.hero-armed.p-done .hero-copy { pointer-events: auto; }
+
   @media (max-width: 800px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; padding: 3rem 1.5rem 3rem; }
-    .hero-visual { display: none !important; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero-sub { font-size: 1rem; }
+    .hero-word-part { font-size: clamp(1.9rem, 12.5vw, 4.5rem); }
+    .hero.hero-armed { min-height: 88vh; }
+    .hero.hero-armed .hero-stage,
+    .hero.hero-armed .hero-stage.is-fixed,
+    .hero.hero-armed .hero-stage.is-end {
+      position: static; height: auto; min-height: 88vh; overflow: visible; gap: 2.25rem;
+    }
+    .hero.hero-armed .hero-word-part { transform: none !important; }
+    .hero.hero-armed .hero-phone { position: static; transform: none; opacity: 1; }
+    .hero.hero-armed .hero-copy { position: static; transform: none; opacity: 1; width: auto; pointer-events: auto; }
   }
-  .hero-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
-  .hero h1 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.1; text-wrap: balance; margin-bottom: 1.5rem; color: #fff; }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero-sub { font-size: 1.125rem; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; max-width: 440px; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #3A3A3A; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.75rem; border-radius: 999px; text-decoration: none; transition: background 0.18s, transform 0.14s; }
   .btn-primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-1px); }
   .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); font-weight: 600; font-size: 0.875rem; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; transition: border-color 0.18s, color 0.18s; }
@@ -192,18 +240,56 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Danceitude gjør dansehverdagen <em>enklere enn noensinne</em></h1>
-    <p class="hero-sub">Av dansere, for dansere.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#kontakt">Begynne å bruke Danceitude?</a>
+<header class="hero" id="hero">
+  <div class="hero-stage">
+    <div class="hero-word" aria-hidden="true"><span class="hero-word-part">dance</span><span class="hero-word-part">itude</span></div>
+    <img class="hero-phone" src="danceitude_bilder.png" alt="">
+    <div class="hero-copy">
+      <h1>Danceitude gjør dansehverdagen <em>enklere enn noensinne</em></h1>
+      <p class="hero-sub">Av dansere, for dansere.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#kontakt">Begynne å bruke Danceitude?</a>
+      </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <img src="danceitude_bilder.png" alt="Danceitude" style="max-width:100%; max-height:600px; object-fit:contain; border-radius:16px;">
-  </div>
-</div>
+</header>
+<script>
+  (function () {
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+    var stage = hero.querySelector('.hero-stage');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; // static hero
+
+    hero.classList.add('hero-armed');
+    var raf = 0;
+    function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+    function update() {
+      raf = 0;
+      if (window.matchMedia('(max-width: 800px)').matches) {
+        hero.style.setProperty('--p', '1');
+        hero.style.setProperty('--cp', '1');
+        stage.classList.remove('is-fixed', 'is-end');
+        return;
+      }
+      var vh = window.innerHeight;
+      var range = hero.offsetHeight - vh;
+      var scrolled = window.scrollY - hero.offsetTop;
+      var p = range > 0 ? clamp(scrolled / range, 0, 1) : (scrolled >= 0 ? 1 : 0);
+      hero.style.setProperty('--p', p.toFixed(4));
+      hero.style.setProperty('--cp', clamp((p - 0.68) / 0.32, 0, 1).toFixed(4));
+      hero.classList.toggle('p-done', p > 0.98);
+      if (p <= 0) { stage.classList.remove('is-fixed', 'is-end'); }
+      else if (p >= 1) { stage.classList.remove('is-fixed'); stage.classList.add('is-end'); }
+      else { stage.classList.add('is-fixed'); stage.classList.remove('is-end'); }
+    }
+    function onScroll() { if (!raf) raf = requestAnimationFrame(update); }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+</script>
 
 <!-- HVA ER DANCEITUDE -->
 <section style="background: var(--surface); padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);">
