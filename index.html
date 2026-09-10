@@ -87,7 +87,7 @@
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center; }
 
   /* Scroll-animated hero (desktop + motion) */
-  .hero.hero-armed { min-height: 172vh; }
+  .hero.hero-armed { min-height: 155vh; }
   .hero.hero-armed .hero-stage {
     position: absolute; top: 0; left: 0; right: 0;
     height: 100vh; min-height: 0; overflow: hidden; display: block; padding: 0;
@@ -104,11 +104,12 @@
     transform: translateX(-50%); z-index: 4; width: max-content;
   }
   .hero.hero-armed .hero-phone {
-    position: absolute; left: 50%; top: 30vh; transform: translateX(-50%);
-    z-index: 2; width: clamp(250px, 36vh, 350px);
+    position: absolute; left: 50%; top: max(27vh, 200px); transform: translateX(-50%);
+    z-index: 2; width: clamp(160px, 23vh, 250px);
   }
   .hero.hero-armed .hero-word {
-    position: absolute; left: 50%; top: 62%; transform: translate(-50%, -50%);
+    position: absolute; left: 50%; top: 56%;
+    transform: translate(-50%, -50%) translateY(var(--wy, 0px));
     z-index: 1;
   }
   .hero.hero-armed .hero-word-part {
@@ -309,6 +310,13 @@
       if (p <= 0) { stage.classList.remove('is-fixed', 'is-end'); }
       else if (p >= 1) { stage.classList.remove('is-fixed'); stage.classList.add('is-end'); }
       else { stage.classList.add('is-fixed'); stage.classList.remove('is-end'); }
+
+      // As the halves rejoin, slide the word from behind the phone to just below it.
+      var pr = phone.getBoundingClientRect();
+      var wh = word.getBoundingClientRect().height || 90;
+      var baseCenter = vh * 0.56;
+      var endCenter = Math.min(pr.bottom + wh / 2 + Math.min(34, vh * 0.035), vh - wh / 2 - 10);
+      hero.style.setProperty('--wy', ((endCenter - baseCenter) * p).toFixed(1) + 'px');
     }
     function onScroll() { if (!raf) raf = requestAnimationFrame(update); }
 
