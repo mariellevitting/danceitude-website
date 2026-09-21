@@ -633,6 +633,10 @@
   </div>
 
   <style>
+    /* #om.story-section har allerede padding via .story-grid under – nullstill sectionens
+       egen standardpadding (fra den generiske "section"-regelen) så den ikke legger seg oppå
+       og dobler luften over/under, særlig merkbart rett før "Visjonen". */
+    #om { padding: 0; }
     #om .story-grid { max-width:1100px; margin:0 auto; padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem); display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
     #om .story-col-text { min-width:0; }
 
