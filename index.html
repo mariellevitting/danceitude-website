@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danceitude</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
@@ -744,9 +746,11 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
-      sweep();                      // reveal whatever is already on screen
-      setTimeout(sweep, 500);       // re-check once layout/fonts settle
-      setTimeout(revealAll, 4000);  // last resort: never leave content hidden
+      window.addEventListener('load', sweep);
+      sweep();                     // reveal whatever is already on screen
+      setTimeout(sweep, 200);      // re-check once fonts/images start settling
+      setTimeout(sweep, 500);      // re-check once layout/fonts settle
+      setTimeout(revealAll, 900);  // last resort: never leave content hidden for long
     })();
   </script>
 </section>
